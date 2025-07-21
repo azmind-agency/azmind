@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Azmind - Automated Everything from A to Z</title>
+<meta name="description" content="Azmind: AI-powered sales agents to automate your outreach, qualify leads, and book meetings." />
+<style>
+  /* Reset */
+  *, *::before, *::after {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(180deg, #0f0f1a 0%, #1b1b2f 100%);
+    color: #eee;
+    line-height: 1.6;
+  }
+
+  a {
+    color: #7f5af0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover {
+    color: #4361ee;
+  }
+
+  /* NAVBAR */
+  nav {
+    position: fixed;
+    width: 100%;
+    background: rgba(15,15,26,0.9);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.8);
+  }
+
+  nav .logo {
+    font-weight: 900;
+    font-size: 1.8rem;
+    background: linear-gradient(90deg, #7f5af0, #4361ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: default;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+  nav ul li {
+    font-weight: 600;
+    cursor: pointer;
+  }
+  nav ul li:hover {
+    color: #7f5af0;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 100px 2rem 60px 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* Hero */
+  #home {
+    padding-top: 140px;
+    text-align: center;
+  }
+  #home h1 {
+    font-size: 3.5rem;
+    background: linear-gradient(90deg, #7f5af0, #4361ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+  }
+  #home p {
+    font-size: 1.25rem;
+    color: #bbb;
+    margin-bottom: 2rem;
+  }
+  #home button {
+    background: #4361ee;
+    color: white;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 9999px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  #home button:hover {
+    background: #7f5af0;
+  }
+
+  /* About Us */
+  #about h2 {
+    color: #7f5af0;
+    margin-bottom: 1rem;
+  }
+  #about p {
+    font-size: 1.1rem;
+    color: #ccc;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* Services */
+  #services h2 {
+    color: #7f5af0;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .services-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    gap: 1.8rem;
+  }
+  .service-card {
+    background: #22263f;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(127, 90, 240, 0.6);
+  }
+  .service-icon {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #7f5af0;
+  }
+  .service-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+  }
+  .service-desc {
+    color: #bbb;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Why Choose Us */
+  #why h2 {
+    color: #7f5af0;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  #why ul {
+    max-width: 700px;
+    margin: 0 auto;
+    list-style: none;
+    color: #ccc;
+  }
+  #why ul li {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+  #why ul li::before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    color: #7f5af0;
+  }
+
+  /* Testimonials */
+  #testimonials h2 {
+    color: #7f5af0;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .testimonial {
+    background: #22263f;
+    padding: 1.8rem 2rem;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.3);
+  }
+  .testimonial p {
+    font-style: italic;
+    color: #bbb;
+    margin-bottom: 0.8rem;
+  }
+  .testimonial .author {
+    font-weight: 700;
+    color: #7f5af0;
+  }
+
+  /* Contact */
+  #contact h2 {
+    color: #7f5af0;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  form label {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: #bbb;
+    font-weight: 600;
+  }
+  form input, form textarea {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+  }
+  form textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  form button {
+    background: #4361ee;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 9999px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  form button:hover {
+    background: #7f5af0;
+  }
+
+  /* Footer */
+  footer {
+    padding: 1rem;
+    text-align: center;
+    color: #555;
+    background: #12121f;
+  }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    nav {
+      padding: 1rem 1.5rem;
+    }
+    nav ul {
+      gap: 1rem;
+    }
+    #home h1 {
+      font-size: 2.5rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Azmind</div>
+  <ul>
+    <li><a href="#home" tabindex="0">Home</a></li>
+    <li><a href="#about" tabindex="0">About Us</a></li>
+    <li><a href="#services" tabindex="0">Services</a></li>
+    <li><a href="#why" tabindex="0">Why Choose Us</a></li>
+    <li><a href="#testimonials" tabindex="0">Testimonials</a></li>
+    <li><a href="#contact" tabindex="0">Contact Us</a></li>
+  </ul>
+</nav>
+
+<section id="home" aria-label="Home section">
+  <h1>Automated Everything from A to Z</h1>
+  <p>AI-powered sales agents to find, qualify, and book meetings for you.</p>
+  <button onclick="alert('Thanks for your interest! We will contact you soon.')">Get a Free Demo</button>
+</section>
+
+<section id="about" aria-label="About us section">
+  <h2>About Us</h2>
+  <p>Azmind harnesses cutting-edge AI technology to automate your sales outreach, qualification, and booking process. We help small and medium businesses boost productivity, save time, and increase revenue with intelligent automation.</p>
+</section>
+
+<section id="services" aria-label="Services section">
+  <h2>Our Services</h2>
+  <div class="services-list">
+    <div class="service-card" tabindex="0">
+      <div class="service-icon">📧</div>
+      <div class="service-title">AI Email Agents</div>
+      <div class="service-desc">Automate personalized outreach and booking using intelligent email workflows.</div>
+    </div>
+    <div class="service-card" tabindex="0">
+      <div class="service-icon">🔗</div>
+      <div class="service-title">LinkedIn & CRM Sync</div>
+      <div class="service-desc">Seamlessly integrate lead generation, messaging, and CRM updates.</div>
+    </div>
+    <div class="service-card" tabindex="0">
+      <div class="service-icon">🎙️</div>
+      <div class="service-title">Voice AI SDR</div>
+      <div class="service-desc">Deploy smart voice agents that qualify leads and book meetings automatically.</div>
+    </div>
+  </div>
+</section>
+
+<section id="why" aria-label="Why choose us section">
+  <h2>Why Choose Us</h2>
+  <ul>
+    <li>Save hours of manual outreach and follow-up work</li>
+    <li>Leverage state-of-the-art AI that learns and adapts</li>
+    <li>Boost lead qualification accuracy and close rates</li>
+    <li>Seamlessly integrate with your existing tools and CRM</li>
+    <li>Enjoy reliable 24/7 automated outreach without burnout</li>
+  </ul>
+</section>
+
+<section id="testimonials" aria-label="Testimonials section">
+  <h2>What Our Clients Say</h2>
+  <article class="testimonial" tabindex="0">
+    <p>"Azmind completely transformed our sales pipeline. The AI agents save us so much time and deliver real results."</p>
+    <p class="author">- Sarah K., Marketing Director</p>
+  </article>
+  <article class="testimonial" tabindex="0">
+    <p>"The integration with our CRM and LinkedIn has been seamless. Highly recommend Azmind for any growing business."</p>
+    <p class="author">- Ahmed R., Sales Manager</p>
+  </article>
+</section>
+
+<section id="contact" aria-label="Contact us section">
+  <h2>Contact Us</h2>
+ <form
+  action="https://formspree.io/f/mrblejyw"
+  method="POST"
+>
+  <label>
+    Your email:
+    <input type="email" name="email">
+  </label>
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+  <!-- your other form fields go here -->
+  <button type="submit">Send</button>
+</form>
+</section>
+
+<footer>
+  &copy; 2025 Azmind. All rights reserved.
+</footer>
+
+<script>
+  // Simple form validation (optional, basic)
+  function validateForm() {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !email || !message) {
+      alert('Please fill in all fields.');
+      return false;
+    }
+
+    // Basic email format check
+    const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+    if (!emailPattern.test(email)) {
+      alert('Please enter a valid email address.');
+      return false;
+    }
+
+    alert('Thank you for contacting us! We will get back to you shortly.');
+    return true;
+  }
+</script>
